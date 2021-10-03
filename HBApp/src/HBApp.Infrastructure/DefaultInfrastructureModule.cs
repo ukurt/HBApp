@@ -45,10 +45,6 @@ namespace HBApp.Infrastructure
                 .As(typeof(IRepository<>))
                 .InstancePerLifetimeScope();
 
-            builder
-                .RegisterType<Mediator>()
-                .As<IMediator>()
-                .InstancePerLifetimeScope();
 
             builder.Register<ServiceFactory>(context =>
             {
@@ -56,21 +52,6 @@ namespace HBApp.Infrastructure
                 return t => c.Resolve(t);
             });
 
-            var mediatrOpenTypes = new[]
-            {
-                typeof(IRequestHandler<,>),
-                typeof(IRequestExceptionHandler<,,>),
-                typeof(IRequestExceptionAction<,>),
-                typeof(INotificationHandler<>),
-            };
-
-            foreach (var mediatrOpenType in mediatrOpenTypes)
-            {
-                builder
-                .RegisterAssemblyTypes(_assemblies.ToArray())
-                .AsClosedTypesOf(mediatrOpenType)
-                .AsImplementedInterfaces();
-            }
         }
 
         private void RegisterDevelopmentOnlyDependencies(ContainerBuilder builder)

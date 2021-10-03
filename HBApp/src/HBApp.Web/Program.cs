@@ -45,7 +45,6 @@ namespace HBApp.Web
             {
                 logging.ClearProviders();
                 logging.AddConsole();
-                // logging.AddAzureWebAppDiagnostics(); add this if deploying to Azure
             });
         });
 

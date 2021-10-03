@@ -44,14 +44,6 @@ namespace HBApp.Infrastructure
             builder.RegisterGeneric(typeof(EfRepository<>))
                 .As(typeof(IRepository<>))
                 .InstancePerLifetimeScope();
-
-
-            builder.Register<ServiceFactory>(context =>
-            {
-                var c = context.Resolve<IComponentContext>();
-                return t => c.Resolve(t);
-            });
-
         }
 
         private void RegisterDevelopmentOnlyDependencies(ContainerBuilder builder)

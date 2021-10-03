@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ParseStrategy\CreateProductParseStrategy.cs~RFae29a2d.TMP" />
+    <None Remove="Parser\CreateProductParseStrategy.cs~RFae29a2d.TMP" />
   </ItemGroup>
 
   <ItemGroup>

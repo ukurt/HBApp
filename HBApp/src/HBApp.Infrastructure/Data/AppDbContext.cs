@@ -28,9 +28,6 @@ namespace HBApp.Infrastructure.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyAllConfigurationsFromCurrentAssembly();
-
-            // alternately this is built-in to EF Core 2.2
-            //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

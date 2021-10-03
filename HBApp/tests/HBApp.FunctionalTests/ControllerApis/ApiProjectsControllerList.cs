@@ -23,10 +23,9 @@ namespace HBApp.FunctionalTests.ControllerApis
         [Fact]
         public async Task ReturnsOneProject()
         {
-            var result = await _client.GetAndDeserialize<IEnumerable<ProductDTO>>("/api/products");
+            var result = await _client.GetAndDeserialize<ProductDTO>("/api/Product/test");
 
-            Assert.Equal(1, result.Count());
-            Assert.Contains(result, i => i.ProductCode == "");
+            Assert.Equal("test",result.ProductCode);
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using Ardalis.Result;
-using System.Threading.Tasks;
-
-namespace HBApp.Core.Interfaces
+﻿namespace HBApp.Core.Interfaces
 {
     public interface IParseService
     {

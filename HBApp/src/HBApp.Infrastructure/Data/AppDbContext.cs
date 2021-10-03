@@ -1,8 +1,5 @@
 ﻿using HBApp.Core;
-using HBApp.SharedKernel;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,12 +7,11 @@ namespace HBApp.Infrastructure.Data
 {
     public class AppDbContext : DbContext
     {
-        private readonly IMediator _mediator;
 
-        public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator)
+        public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
-            _mediator = mediator;
+            
         }
 
         public DbSet<Product> Products { get; set; }

@@ -29,7 +29,7 @@ namespace HBApp.IntegrationTests.Data
             var options = CreateNewContextOptions();
             var mockMediator = new Mock<IMediator>();
 
-            _dbContext = new AppDbContext(options, mockMediator.Object);
+            _dbContext = new AppDbContext(options);
             return new EfRepository<Product>(_dbContext);
         }
     }

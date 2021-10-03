@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HBApp.Core.ParseStrategy
+﻿namespace HBApp.Core.ParseStrategy
 {
     public class StrategyContext
     {

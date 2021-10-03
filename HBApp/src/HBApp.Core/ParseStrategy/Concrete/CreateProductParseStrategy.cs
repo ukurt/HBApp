@@ -1,9 +1,5 @@
-﻿using Ardalis.Result;
-using HBApp.Core.Interfaces;
-using HBApp.Core.ParseStrategy;
-using HBApp.SharedKernel.Interfaces;
+﻿using HBApp.Core.ParseStrategy;
 using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 

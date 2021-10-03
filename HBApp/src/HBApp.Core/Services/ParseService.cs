@@ -1,12 +1,7 @@
 ﻿using HBApp.Core.Constant;
 using HBApp.Core.Interfaces;
 using HBApp.Core.ParseStrategy;
-using HBApp.SharedKernel;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HBApp.Core.Services
 {

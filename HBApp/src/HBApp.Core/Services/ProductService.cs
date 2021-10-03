@@ -1,5 +1,4 @@
-﻿using Ardalis.Result;
-using HBApp.Core.Interfaces;
+﻿using HBApp.Core.Interfaces;
 using HBApp.SharedKernel.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,39 +14,17 @@ namespace HBApp.Core.Services
             _repository = repository;
         }
 
-        public async Task<Result<Product>> AddProductAsync(string productCode, decimal price, int stock)
+        public async Task<Product> AddProductAsync(string productCode, decimal price, int stock)
         {
-            if (string.IsNullOrEmpty(productCode))
-            {
-                var errors = new List<ValidationError>();
-                errors.Add(new ValidationError()
-                {
-                    Identifier = nameof(productCode),
-                    ErrorMessage = $"{nameof(productCode)} is required."
-                });
-                return Result<Product>.Invalid(errors);
-            }
             var product = new Product(productCode, price, stock);
             await _repository.AddAsync(product);
-
-            return new Result<Product>(product);
+            return product;
         }
 
-        public async Task<Result<Product>> GetProductByCodeAsync(string productCode)
+        public async Task<Product> GetProductByCodeAsync(string productCode)
         {
-            if (string.IsNullOrEmpty(productCode))
-            {
-                var errors = new List<ValidationError>();
-                errors.Add(new ValidationError()
-                {
-                    Identifier = nameof(productCode),
-                    ErrorMessage = $"{nameof(productCode)} is required."
-                });
-                return Result<Product>.Invalid(errors);
-            }
-
             var product = await _repository.GetAsync<Product>(p => p.ProductCode == productCode);
-            return new Result<Product>(product);
+            return product;
         }
 
     }

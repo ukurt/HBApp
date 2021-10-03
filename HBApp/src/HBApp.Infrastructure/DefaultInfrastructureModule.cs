@@ -13,7 +13,7 @@ namespace HBApp.Infrastructure
     public class DefaultInfrastructureModule : Module
     {
         private readonly bool _isDevelopment = false;
-        public DefaultInfrastructureModule(bool isDevelopment, Assembly callingAssembly = null)
+        public DefaultInfrastructureModule(bool isDevelopment)
         {
             _isDevelopment = isDevelopment;
         }

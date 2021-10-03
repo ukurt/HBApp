@@ -1,5 +1,6 @@
 ﻿using Ardalis.Result;
 using HBApp.Core.Interfaces;
+using HBApp.Core.ParseStrategy;
 using HBApp.SharedKernel.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -33,6 +34,6 @@ namespace HBApp.Core.Services
 
             return new Result<Campaign>(campaign);
         }
-       
+
     }
 }

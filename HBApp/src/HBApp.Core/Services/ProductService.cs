@@ -49,5 +49,6 @@ namespace HBApp.Core.Services
             var product = await _repository.GetAsync<Product>(p => p.ProductCode == productCode);
             return new Result<Product>(product);
         }
+
     }
 }

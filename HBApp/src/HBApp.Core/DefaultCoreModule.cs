@@ -11,7 +11,7 @@ namespace HBApp.Core
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerLifetimeScope();
             builder.RegisterType<OrderService>().As<IOrderService>().InstancePerLifetimeScope();
             builder.RegisterType<CampaignService>().As<ICampaignService>().InstancePerLifetimeScope();
-
+            builder.RegisterType<ParseService>().As<IParseService>().InstancePerLifetimeScope();
         }
     }
 }

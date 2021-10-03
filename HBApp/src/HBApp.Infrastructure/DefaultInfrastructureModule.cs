@@ -18,9 +18,7 @@ namespace HBApp.Infrastructure
         public DefaultInfrastructureModule(bool isDevelopment, Assembly callingAssembly = null)
         {
             _isDevelopment = isDevelopment;
-            var coreAssembly = Assembly.GetAssembly(typeof(Product)); 
             var infrastructureAssembly = Assembly.GetAssembly(typeof(StartupSetup));
-            _assemblies.Add(coreAssembly);
             _assemblies.Add(infrastructureAssembly);
             if (callingAssembly != null)
             {

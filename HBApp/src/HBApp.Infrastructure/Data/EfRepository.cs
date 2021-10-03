@@ -1,6 +1,4 @@
-﻿using Ardalis.Specification;
-using Ardalis.Specification.EntityFrameworkCore;
-using HBApp.SharedKernel;
+﻿using HBApp.SharedKernel;
 using HBApp.SharedKernel.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;

@@ -18,12 +18,6 @@ namespace HBApp.Infrastructure
         public DefaultInfrastructureModule(bool isDevelopment, Assembly callingAssembly = null)
         {
             _isDevelopment = isDevelopment;
-            var infrastructureAssembly = Assembly.GetAssembly(typeof(StartupSetup));
-            _assemblies.Add(infrastructureAssembly);
-            if (callingAssembly != null)
-            {
-                _assemblies.Add(callingAssembly);
-            }
         }
 
         protected override void Load(ContainerBuilder builder)

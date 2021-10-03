@@ -1,5 +1,4 @@
-﻿using Ardalis.EFCore.Extensions;
-using HBApp.Core;
+﻿using HBApp.Core;
 using HBApp.SharedKernel;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -26,8 +25,6 @@ namespace HBApp.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.ApplyAllConfigurationsFromCurrentAssembly();
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

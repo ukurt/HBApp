@@ -7,6 +7,7 @@ namespace HBApp.Core.Interfaces
     {
         Task<Product> AddProductAsync(CreateProductDto createProductDto);
         Task<Product> GetProductByCodeAsync(string productCode);
+        Task<Product> IncreaseStockAsync(string productCode,int quantity);
 
     }
 }

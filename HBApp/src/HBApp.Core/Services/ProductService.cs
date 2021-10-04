@@ -28,5 +28,12 @@ namespace HBApp.Core.Services
             return product;
         }
 
+        public async Task<Product> IncreaseStockAsync(string productCode,int quantity)
+        {
+            var product = await _repository.GetAsync<Product>(p => p.ProductCode == productCode);
+            product.Stock -= quantity;
+            await _repository.UpdateAsycn(product);
+            return product;
+        }
     }
 }

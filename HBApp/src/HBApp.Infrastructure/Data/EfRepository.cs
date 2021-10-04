@@ -46,5 +46,13 @@ namespace HBApp.Infrastructure.Data
 
             return entity;
         }
+
+        public async Task<T1> UpdateAsycn<T1>(T1 entity) where T1 : BaseEntity
+        {
+            _dbContext.Attach(entity);
+            _dbContext.Entry(entity).Property(p => p.Id).IsModified = true;
+            await _dbContext.SaveChangesAsync();
+            return entity;
+        }
     }
 }

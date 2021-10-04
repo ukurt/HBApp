@@ -6,8 +6,9 @@ namespace HBApp.Core.Interfaces
     public interface ICampaignService
     {
         Task AddCampaignAsync(CreateCampaignDto campaignDto);
-        Task<GetCampaignInfoDto> GetCampaignInfoAsync(GetCampaignInfoDto campaignInfoDto);
-        Task<Campaign> GetCampaignAsync(CreateCampaignDto createCampaignDto);
+        Task<Campaign> GetCampaignAsync(string campaignName);
+        Task<Campaign> GetActiveCampaignForThisProduct(string productCode);
+        Task ChangeCampaignStatus(Campaign campaign, int status);
 
 
     }

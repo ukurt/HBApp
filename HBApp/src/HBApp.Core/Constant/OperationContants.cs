@@ -19,5 +19,9 @@ namespace HBApp.Core.Constant
                 @"(?<variable>[a-zA-Z_$][a-zA-Z0-9_$]*)|" +
                  @"(?<integer>[0-9]+)|" +
                 @"(?<invalid>[^\s]+)";
+
+        public const string CampaignStatusComplete = "Complete";
+        public const string CampaignStatusActive = "Active";
+
     }
 }

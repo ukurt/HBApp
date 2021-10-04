@@ -6,5 +6,6 @@ namespace HBApp.Core.Interfaces
     public interface IOrderService
     {
         Task<Order> CreateOrderAsync(CreateOrderDto createOrderDto);
+
     }
 }

@@ -17,7 +17,7 @@ namespace HBApp.Core.Services
 
         public async Task<Order> CreateOrderAsync(CreateOrderDto createOrderDto)
         {
-            var order = new Order(createOrderDto.ProductCode, createOrderDto.Quantity);
+            var order = new Order(createOrderDto.ProductCode, createOrderDto.Quantity, createOrderDto.CampaignCode, createOrderDto.UnitPrice);
             await _repository.AddAsync(order);
             return order;
         }

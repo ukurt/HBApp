@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace HBApp.Core.Dto
 {
-    public class CreateOrderDto : BaseDto
+    public class GetProductInfo : BaseDto
     {
         public string ProductCode { get; set; }
-        public int Quantity { get; set; }
-        public string CampaignCode { get; set; }
-        public decimal UnitPrice { get; set; }
+        public decimal Price { get; set; }
+        public int Stock{ get; set; }
 
 
         public override string ToString()
         {
-            return $"Order created; product {ProductCode}, quantity {Quantity}";
+            return $"Product {ProductCode} info; price {Price}, stock {Stock}";
         }
 
     }

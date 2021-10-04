@@ -14,6 +14,7 @@ namespace HBApp.Core
         public int Duration { get; set; }
         public int PriceManipulation { get; set; }
         public int TargetSaleCount { get; set; }
+        public int Status { get; set; } // 1:Active 2:Complete
 
         public Campaign()
         {
@@ -26,6 +27,7 @@ namespace HBApp.Core
             Duration = duration;
             PriceManipulation = priceManipulation;
             TargetSaleCount = targetSaleCount;
+            Status = 1;
         }
     }
 }

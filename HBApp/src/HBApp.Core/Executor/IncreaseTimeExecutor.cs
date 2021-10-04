@@ -9,8 +9,15 @@ namespace HBApp.Core.Services
 {
     public class IncreaseTimeExecutor : IExecutor
     {
+        IProductService _productService;
+        public IncreaseTimeExecutor(IProductService productService)
+        {
+            _productService = productService;
+        }
+
         public async Task<BaseDto> Execute(BaseDto baseDto)
         {
+
             return (IncreaseTimeDto)baseDto;
         }
     }

@@ -1,4 +1,5 @@
-﻿using HBApp.Core.Dto;
+﻿using HBApp.Core.Constant;
+using HBApp.Core.Dto;
 using HBApp.Core.Interfaces;
 using HBApp.Core.ParseStrategy;
 using System;
@@ -20,8 +21,15 @@ namespace HBApp.Core.Services
         public async Task<BaseDto> Execute(BaseDto baseDto)
         {
             var dtoToExecute = (GetCampaignInfoDto)baseDto;
-            dtoToExecute = await _campaignService.GetCampaignInfoAsync(dtoToExecute);
-            dtoToExecute.Status = Singleton.Instance.CampaignTill <= Singleton.Instance.SimulateDate ? "Completed" : "Active";
+            var campaign  = await _campaignService.GetCampaignAsync(dtoToExecute.Name);
+            dtoToExecute.TargetSales = campaign.TargetSaleCount;
+            dtoToExecute.Status = Singleton.Instance.CampaignTill <= Singleton.Instance.SimulateDate ? OperationContants.CampaignStatusComplete : OperationContants.CampaignStatusActive;
+
+            if (dtoToExecute.Status == OperationContants.CampaignStatusComplete)
+            {
+                await _campaignService.ChangeCampaignStatus(campaign, 2);
+            }
+
             return dtoToExecute;
         }
     }

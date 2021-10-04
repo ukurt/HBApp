@@ -71,8 +71,6 @@ namespace HBApp.FunctionalTests
                     {
                         options.UseInMemoryDatabase(inMemoryCollectionName);
                     });
-
-                    services.AddScoped<IMediator, NoOpMediator>();
                 });
         }
     }

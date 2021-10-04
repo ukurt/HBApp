@@ -24,8 +24,10 @@ namespace HBApp.Web.Api
         [HttpPost]
         public async Task<IActionResult> Post(IFormFile formFile)
         {
+            //00:00 simule etmek icin singleton bir tarih objesi kullandım
             Singleton.Instance.SimulateDate = DateTime.MinValue;
 
+            //Tüm output un ekleneceği string builder nesnesi
             var stringBuilder = new StringBuilder();
             using (var stream = new StreamReader(formFile.OpenReadStream()))
             {

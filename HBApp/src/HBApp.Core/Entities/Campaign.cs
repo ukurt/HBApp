@@ -15,7 +15,10 @@ namespace HBApp.Core
         public int PriceManipulation { get; set; }
         public int TargetSaleCount { get; set; }
         public int Status { get; set; } // 1:Active 2:Complete
-        public decimal ProductPrice { get; set; } // 1:Active 2:Complete
+        /// <summary>
+        /// Ürünün fiyat manipulasyonunu kampanya üzerinde yapıp gerçek ürüne müdahale etmiyorum
+        /// </summary>
+        public decimal ProductPrice { get; set; }
 
         public Campaign()
         {

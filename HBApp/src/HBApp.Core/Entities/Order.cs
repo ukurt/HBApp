@@ -14,6 +14,9 @@ namespace HBApp.Core
         public int Quantity { get; set; }
         public int Status { get; set; } = 1;
         public string CampaignCode { get; set; }
+        /// <summary>
+        /// Kampanya varsa kampanya üzerindeki fiyat, yoksa product üzerinden okuyacak
+        /// </summary>
         public decimal UnitPrice { get; set; } = 1;
         public Order()
         {

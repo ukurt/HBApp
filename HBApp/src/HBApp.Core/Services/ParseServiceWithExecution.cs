@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace HBApp.Core.Services
 {
+    ///Core da buluan StartupSetup ta key e göre executor olusturmam gerekiyordu
     public delegate IExecutor ExecutorResolver(string constValue);
 
-    //dekorator
+    //dekorator. parse işlemine birde execute edebilecek kabiliyet gerekiyordu.
     public class ParseServiceWithExecution : IParseService
     {
         private readonly IParseService _innerParseService;

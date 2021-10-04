@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 
 namespace HBApp.Core.Services
 {
-
     public class ParseService : IParseService
     {
         private StrategyContext strategyContext = new();
 
+        /// <summary>
+        /// text split edilerek key olusturulup, ilgili strategy belirleniyor.
+        /// </summary>
+        /// <param name="text">parse edilecek text</param>
+        /// <returns></returns>
         public async Task<BaseDto> Parse(string text)
         {
             var key = StringHelper.SplitAndGetFirst(text);

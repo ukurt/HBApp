@@ -17,7 +17,9 @@ namespace HBApp.Core.Services
 
         public async Task<BaseDto> Execute(BaseDto baseDto)
         {
-            return null;
+            var dtoToExecute = (CreateCampaignDto)baseDto;
+            await _campaignService.AddCampaignAsync(dtoToExecute);
+            return dtoToExecute;
         }
     }
 }

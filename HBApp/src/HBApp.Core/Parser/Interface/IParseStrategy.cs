@@ -6,5 +6,7 @@ namespace HBApp.Core.ParseStrategy
     public interface IParseStrategy
     {
         Task<BaseDto> Parse(string text);
+
+        void Validate(int count);
     }
 }

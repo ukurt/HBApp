@@ -1,4 +1,5 @@
-﻿using HBApp.Core.Dto;
+﻿using HBApp.Core.Constant;
+using HBApp.Core.Dto;
 using HBApp.Core.ParseStrategy;
 using System;
 using System.Text.RegularExpressions;
@@ -12,22 +13,13 @@ namespace HBApp.Core.Services
         {
             text = text.Trim();
 
-            var pattern = @"create_product" +
-                @"(?<whitespace>\s*)|" +
-                @"(?<variable>[a-zA-Z_$][a-zA-Z0-9_$]*)|" +
-                 @"(?<integer>[0-9]+)|" +
-                @"(?<invalid>[^\s]+)";
-
+            var pattern = OperationContants.CreateProduct + OperationContants.Pattern;
 
             MatchCollection matches = Regex.Matches(text, pattern, RegexOptions.ExplicitCapture);
+            
+            Validate(matches.Count);
 
             CreateProductDto createProductDto = new();
-
-            //Eger create_product icin verilen pattern e uymuyorsa patlat!
-            if (matches.Count != 4)
-            {
-                throw new Exception("Check your pattern");
-            }
 
             int i = 0;
 
@@ -61,5 +53,12 @@ namespace HBApp.Core.Services
             return await Task.FromResult(createProductDto);
         }
 
+        public void Validate(int count)
+        {
+            if (count != 4)
+            {
+                throw new Exception("Check your pattern");
+            }
+        }
     }
 }

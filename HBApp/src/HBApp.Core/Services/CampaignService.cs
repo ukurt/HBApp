@@ -1,4 +1,5 @@
-﻿using HBApp.Core.Interfaces;
+﻿using HBApp.Core.Dto;
+using HBApp.Core.Interfaces;
 using HBApp.SharedKernel.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,9 +15,10 @@ namespace HBApp.Core.Services
             _repository = repository;
         }
 
-        public async Task<Campaign> AddCampaignAsync(string name, string productCode, int duration, int priceManipulation, int targetSaleCount)
+        public async Task<Campaign> AddCampaignAsync(CreateCampaignDto campaignDto)
         {
-            var campaign = new Campaign(name,productCode,duration,priceManipulation,targetSaleCount);
+            var campaign = new Campaign(campaignDto.Name, campaignDto.ProductCode, campaignDto.Duration,
+                campaignDto.PriceManipulationLimit, campaignDto.TargetSaleCount);
             await _repository.AddAsync(campaign);
             return campaign;
         }

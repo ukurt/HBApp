@@ -14,5 +14,10 @@ namespace HBApp.Core.Constant
         public const string CreateCampaign = "create_campaign";
         public const string GetCampaignInfo = "get_campaign_info";
         public const string IncreaseTime = "increase_time";
+
+        public const string Pattern = @"(?<whitespace>\s*)|" +
+                @"(?<variable>[a-zA-Z_$][a-zA-Z0-9_$]*)|" +
+                 @"(?<integer>[0-9]+)|" +
+                @"(?<invalid>[^\s]+)";
     }
 }

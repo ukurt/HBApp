@@ -8,6 +8,7 @@ namespace HBApp.Core.Dto
 {
     public class IncreaseTimeDto : BaseDto
     {
+        public int TimeInt { get; set; }
         public string Time { get; set; }
 
         public override string ToString()

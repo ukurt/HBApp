@@ -17,7 +17,7 @@ namespace HBApp.Core.Dto
 
         public override string ToString()
         {
-            return $"Campaign {Name} info; Status {Status}, Target Sales {TargetSales}, Total Sales {TotalSales}, Turnover {Turnover}, Average Item Price {AverageItemPrice}";
+            return $"Campaign {Name} info; Status {(Status == 1 ? "Active" : "Completed")}, Target Sales {TargetSales}, Total Sales {TotalSales}, Turnover {Turnover}, Average Item Price {AverageItemPrice}";
         }
 
     }

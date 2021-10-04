@@ -20,6 +20,7 @@ namespace HBApp.Core.Services
 
         public async Task<BaseDto> Execute(BaseDto baseDto)
         {
+            var dtoToExecute = (IncreaseTimeDto)baseDto;
             var campaigns = _campaignService.GetActiveCampaigns();
 
             foreach (var campaign in campaigns)
@@ -28,17 +29,17 @@ namespace HBApp.Core.Services
 
                 if (campaign.TargetSaleCount > totalSales)
                 {
-                    campaign.ProductPrice -= campaign.PriceManipulation;
+                    campaign.ProductPrice -= (campaign.PriceManipulation * dtoToExecute.TimeInt);
                 }
                 else
                 {
-                    campaign.ProductPrice += campaign.PriceManipulation;
+                    campaign.ProductPrice += (campaign.PriceManipulation * dtoToExecute.TimeInt);
                 }
 
                 await _campaignService.UpdateCampaingAsync(campaign);
             }
 
-            return (IncreaseTimeDto)baseDto;
+            return dtoToExecute;
         }
     }
 }

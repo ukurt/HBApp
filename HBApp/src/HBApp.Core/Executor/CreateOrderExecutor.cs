@@ -27,11 +27,13 @@ namespace HBApp.Core.Services
 
             var campaign = await _campaignService.GetActiveCampaignForThisProduct(dtoToExecute.ProductCode);
             var product = await _productService.GetProductByCodeAsync(dtoToExecute.ProductCode);
+            
+            dtoToExecute.UnitPrice = product.Price;
 
             if (campaign !=null)
             {
                 dtoToExecute.CampaignCode = campaign.Name;
-                dtoToExecute.UnitPrice = product.Price;
+                dtoToExecute.UnitPrice = campaign.ProductPrice;
             }
 
             await _orderService.CreateOrderAsync(dtoToExecute);

@@ -26,19 +26,27 @@ namespace HBApp.Core.Services
 
         public decimal GetAveragePriceForCampaign(string campaignCode)
         {
-            return _repository.GetAll<Order>(o => o.CampaignCode == campaignCode).Average(o=>o.UnitPrice);
+            //Aggregate islemlerde sqlite Sum,Avg gibi fonksiyonları kullandırmıyor. Mecbur bu sekilde yaptım.
+            var orders = _repository.GetAll<Order>(o => o.CampaignCode == campaignCode).ToList();
+            decimal total = 0;
+            orders.ForEach(o => total += o.UnitPrice);
+            return total / orders.Count();
         }
 
         public int GetTotalSales(string campaignCode)
         {
-            var orders = _repository.GetAll<Order>(o => o.CampaignCode == campaignCode);
-            return orders.Count();
+            var orders = _repository.GetAll<Order>(o => o.CampaignCode == campaignCode).ToList();
+            int total = 0;
+            orders.ForEach(o => total += o.Quantity);
+            return total;
         }
 
         public int GetTotalTurnover(string campaignCode)
         {
-            var orders = _repository.GetAll<Order>(o => o.CampaignCode == campaignCode && o.Status == OperationContants.OrderStatusCancel);
-            return orders.Count();
+            var orders = _repository.GetAll<Order>(o => o.CampaignCode == campaignCode && o.Status == OperationContants.OrderStatusCancel).ToList();
+            int total = 0;
+            orders.ForEach(o => total += o.Quantity);
+            return total;
         }
     }
 }

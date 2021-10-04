@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HBApp.Web.Api
@@ -20,6 +21,7 @@ namespace HBApp.Web.Api
         [HttpPost]
         public async Task<IActionResult> Post(IFormFile formFile)
         {
+            var stringBuilder = new StringBuilder();
             using (var stream = new StreamReader(formFile.OpenReadStream()))
             {
                 while (!stream.EndOfStream)
@@ -27,10 +29,11 @@ namespace HBApp.Web.Api
                     var text = await stream.ReadLineAsync();
                     var result = await _parseService.Parse(text);
                     var syntax = result.ToString();
+                    stringBuilder.AppendLine(syntax);
                 }
             }
 
-            return Ok(true);
+            return Ok(stringBuilder.ToString());
         }
     }
 }

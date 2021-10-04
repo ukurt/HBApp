@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace HBApp.Core.Services
 {
-    public class CreateProductExecutor : IExecutor
+    public class GetCampaignInfoExecutor : IExecutor
     {
         IProductService _productService;
-        public CreateProductExecutor(IProductService productService)
+        public GetCampaignInfoExecutor(IProductService productService)
         {
             _productService = productService;
         }
@@ -19,7 +19,7 @@ namespace HBApp.Core.Services
         {
             var dtoToExecute = (CreateProductDto)baseDto;
             await _productService.AddProductAsync(dtoToExecute);
-            return dtoToExecute;
+            return null;
         }
     }
 }

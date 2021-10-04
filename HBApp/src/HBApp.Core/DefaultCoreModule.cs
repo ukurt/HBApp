@@ -13,6 +13,11 @@ namespace HBApp.Core
             builder.RegisterType<CampaignService>().As<ICampaignService>().InstancePerLifetimeScope();
             builder.RegisterType<CampaignService>().As<ICampaignService>().InstancePerLifetimeScope();
             builder.RegisterType<CreateProductExecutor>();
+            builder.RegisterType<CreateCampaignExecutor>();
+            builder.RegisterType<CreateOrderExecutor>();
+            builder.RegisterType<GetCampaignInfoExecutor>();
+            builder.RegisterType<GetProductInfoExecutor>();
+            builder.RegisterType<IncreaseTimeExecutor>();
 
             builder.RegisterType<ParseService>().Named<IParseService>("handler");
             builder.RegisterDecorator<IParseService>((c, inner) => new ParseServiceWithExecution(inner, c.Resolve<ExecutorResolver>()), fromKey: "handler");

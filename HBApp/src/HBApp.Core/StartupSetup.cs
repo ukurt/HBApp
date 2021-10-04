@@ -15,7 +15,17 @@ namespace HBApp.Core
                 {
                     case OperationContants.CreateProduct:
                         return serviceProvider.GetService<CreateProductExecutor>();
-                    
+                    case OperationContants.CreateOrder:
+                        return serviceProvider.GetService<CreateOrderExecutor>();
+                    case OperationContants.CreateCampaign:
+                        return serviceProvider.GetService<CreateCampaignExecutor>();
+                    case OperationContants.GetCampaignInfo:
+                        return serviceProvider.GetService<GetCampaignInfoExecutor>();
+                    case OperationContants.GetProductInfo:
+                        return serviceProvider.GetService<GetProductInfoExecutor>();
+                    case OperationContants.IncreaseTime:
+                        return serviceProvider.GetService<IncreaseTimeExecutor>();
+
                     default:
                         throw new NotSupportedException($"ExecutorResolver, key: {key}");
                 }

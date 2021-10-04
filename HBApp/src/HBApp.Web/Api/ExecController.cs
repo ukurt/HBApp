@@ -1,4 +1,5 @@
-﻿using HBApp.Core.Interfaces;
+﻿using HBApp.Core.Helper;
+using HBApp.Core.Interfaces;
 using HBApp.Core.ParseStrategy;
 using HBApp.Web.ApiModels;
 using Microsoft.AspNetCore.Http;

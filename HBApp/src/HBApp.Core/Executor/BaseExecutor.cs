@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace HBApp.Core.Services
 {
-    public abstract class BaseExecutor 
+    public interface IExecutor 
     {
-        public abstract Task<BaseDto> Execute(BaseDto baseDto);
+        Task<BaseDto> Execute(BaseDto baseDto);
     }
 }

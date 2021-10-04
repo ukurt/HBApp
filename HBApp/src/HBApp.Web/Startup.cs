@@ -34,6 +34,7 @@ namespace HBApp.Web
             string connectionString = Configuration.GetConnectionString("SqliteConnection");  //Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext(connectionString);
+            services.AddResolver();
 
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddRazorPages();

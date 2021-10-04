@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HBApp.Core.Services
 {
-    public class CreateProductExecutor : BaseExecutor
+    public class CreateProductExecutor : IExecutor
     {
         IProductService _productService;
         public CreateProductExecutor(IProductService productService)
@@ -15,7 +15,7 @@ namespace HBApp.Core.Services
             _productService = productService;
         }
 
-        public override async Task<BaseDto> Execute(BaseDto baseDto)
+        public async Task<BaseDto> Execute(BaseDto baseDto)
         {
             var dtoToExecute = (CreateProductDto)baseDto;
             await _productService.AddProductAsync(dtoToExecute);

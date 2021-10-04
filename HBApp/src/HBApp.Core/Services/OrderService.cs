@@ -1,4 +1,5 @@
-﻿using HBApp.Core.Interfaces;
+﻿using HBApp.Core.Dto;
+using HBApp.Core.Interfaces;
 using HBApp.SharedKernel.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,9 +15,9 @@ namespace HBApp.Core.Services
             _repository = repository;
         }
 
-        public async Task<Order> CreateOrderAsync(string productCode, int quantiy)
+        public async Task<Order> CreateOrderAsync(CreateOrderDto createOrderDto)
         {
-            var order = new Order(productCode, quantiy);
+            var order = new Order(createOrderDto.ProductCode, createOrderDto.Quantity);
             await _repository.AddAsync(order);
             return order;
         }

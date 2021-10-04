@@ -17,8 +17,6 @@ namespace HBApp.Core.Services
 
             MatchCollection matches = Regex.Matches(text, pattern, RegexOptions.ExplicitCapture);
             
-            Validate(matches.Count);
-
             CreateProductDto createProductDto = new();
 
             int i = 0;
@@ -51,14 +49,6 @@ namespace HBApp.Core.Services
             }
 
             return await Task.FromResult(createProductDto);
-        }
-
-        public void Validate(int count)
-        {
-            if (count != 4)
-            {
-                throw new Exception("Check your pattern");
-            }
         }
     }
 }

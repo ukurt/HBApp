@@ -10,10 +10,5 @@ namespace HBApp.Core.Services
         {
             throw new System.NotImplementedException();
         }
-
-        public void Validate(int count)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

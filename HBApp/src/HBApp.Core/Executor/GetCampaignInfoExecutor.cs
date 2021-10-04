@@ -9,17 +9,20 @@ namespace HBApp.Core.Services
 {
     public class GetCampaignInfoExecutor : IExecutor
     {
-        IProductService _productService;
-        public GetCampaignInfoExecutor(IProductService productService)
+        ICampaignService _campaignService;
+        IOrderService _orderService;
+        public GetCampaignInfoExecutor(ICampaignService campaignService, IOrderService orderService)
         {
-            _productService = productService;
+            _campaignService = campaignService;
+            _orderService = orderService;
         }
 
         public async Task<BaseDto> Execute(BaseDto baseDto)
         {
-            var dtoToExecute = (CreateProductDto)baseDto;
-            await _productService.AddProductAsync(dtoToExecute);
-            return null;
+            var dtoToExecute = (GetCampaignInfoDto)baseDto;
+            dtoToExecute = await _campaignService.GetCampaignInfoAsync(dtoToExecute);
+
+            return dtoToExecute;
         }
     }
 }

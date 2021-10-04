@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using HBApp.Core.Dto;
+using System.Threading.Tasks;
 
 namespace HBApp.Core.Interfaces
 {
     public interface IOrderService
     {
-        Task<Order> CreateOrderAsync(string productCode, int quantiy);
+        Task<Order> CreateOrderAsync(CreateOrderDto createOrderDto);
     }
 }

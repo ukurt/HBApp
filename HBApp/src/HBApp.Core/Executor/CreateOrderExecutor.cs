@@ -17,7 +17,9 @@ namespace HBApp.Core.Services
 
         public async Task<BaseDto> Execute(BaseDto baseDto)
         {
-            return null;
+            var dtoToExecute = (CreateOrderDto)baseDto;
+            await _orderService.CreateOrderAsync(dtoToExecute);
+            return dtoToExecute;
         }
     }
 }

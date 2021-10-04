@@ -19,10 +19,6 @@ namespace HBApp.Core.Services
 
             CreateCampaignDto createCampaignDto = new();
 
-            //Eger create_campaign icin verilen pattern e uymuyorsa patlat!
-
-            Validate(matches.Count);
-
             int i = 0;
 
             //Tokenlarda gez ve uygunluğuna ve sırasına göre değerleri al
@@ -56,12 +52,6 @@ namespace HBApp.Core.Services
             }
 
             return await Task.FromResult(createCampaignDto);
-        }
-
-        public void Validate(int count)
-        {
-            if (count != 6)
-                throw new Exception("CheckPattern");
         }
     }
 }

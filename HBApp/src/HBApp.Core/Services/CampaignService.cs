@@ -15,13 +15,19 @@ namespace HBApp.Core.Services
             _repository = repository;
         }
 
-        public async Task<Campaign> AddCampaignAsync(CreateCampaignDto campaignDto)
+        public async Task AddCampaignAsync(CreateCampaignDto campaignDto)
         {
             var campaign = new Campaign(campaignDto.Name, campaignDto.ProductCode, campaignDto.Duration,
                 campaignDto.PriceManipulationLimit, campaignDto.TargetSaleCount);
             await _repository.AddAsync(campaign);
-            return campaign;
         }
 
+        public async Task<GetCampaignInfoDto> GetCampaignInfoAsync(GetCampaignInfoDto campaignInfoDto)
+        {
+            var campaing = await _repository.GetAsync<Campaign>(c => c.Name == campaignInfoDto.Name);
+            campaignInfoDto.Name = campaing.Name;
+            campaignInfoDto.TargetSales = campaing.TargetSaleCount;
+            return campaignInfoDto;
+        }
     }
 }

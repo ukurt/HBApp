@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using HBApp.Core.Decorator;
 using HBApp.Core.Interfaces;
 using HBApp.Core.Services;
 

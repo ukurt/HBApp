@@ -1,12 +1,10 @@
-﻿using HBApp.Core.Constant;
-using HBApp.Core.Dto;
+﻿using HBApp.Core.Dto;
 using HBApp.Core.Helper;
 using HBApp.Core.Interfaces;
-using HBApp.Core.ParseStrategy;
-using System.Linq;
+using HBApp.Core.Services;
 using System.Threading.Tasks;
 
-namespace HBApp.Core.Services
+namespace HBApp.Core.Decorator
 {
     ///Core da buluan StartupSetup ta key e göre executor olusturmam gerekiyordu
     public delegate IExecutor ExecutorResolver(string constValue);

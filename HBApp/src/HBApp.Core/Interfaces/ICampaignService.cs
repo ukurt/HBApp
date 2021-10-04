@@ -7,6 +7,8 @@ namespace HBApp.Core.Interfaces
     {
         Task AddCampaignAsync(CreateCampaignDto campaignDto);
         Task<GetCampaignInfoDto> GetCampaignInfoAsync(GetCampaignInfoDto campaignInfoDto);
+        Task<Campaign> GetCampaignAsync(CreateCampaignDto createCampaignDto);
+
 
     }
 }

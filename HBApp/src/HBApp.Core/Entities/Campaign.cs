@@ -26,7 +26,6 @@ namespace HBApp.Core
             Duration = duration;
             PriceManipulation = priceManipulation;
             TargetSaleCount = targetSaleCount;
-
         }
     }
 }

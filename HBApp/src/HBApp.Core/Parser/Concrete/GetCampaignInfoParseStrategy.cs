@@ -1,5 +1,7 @@
-﻿using HBApp.Core.Dto;
+﻿using HBApp.Core.Constant;
+using HBApp.Core.Dto;
 using HBApp.Core.ParseStrategy;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace HBApp.Core.Services
@@ -8,7 +10,28 @@ namespace HBApp.Core.Services
     {
         public async Task<BaseDto> Parse(string text)
         {
-            throw new System.NotImplementedException();
+            text = text.Trim();
+
+            var pattern = OperationContants.GetCampaignInfo + OperationContants.Pattern;
+
+            MatchCollection matches = Regex.Matches(text, pattern, RegexOptions.ExplicitCapture);
+
+            GetCampaignInfoDto campaignInfoDto = new();
+
+            int i = 0;
+
+            //Tokenlarda gez ve uygunluğuna ve sırasına göre değerleri al
+            foreach (Match m in matches)
+            {
+                var variable = m.Groups["variable"].Value;
+
+                if (!string.IsNullOrEmpty(variable))
+                {
+                    campaignInfoDto.Name = variable;
+                }
+            }
+
+            return await Task.FromResult(campaignInfoDto);
         }
     }
 }

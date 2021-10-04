@@ -18,7 +18,12 @@ namespace HBApp.Core.Services
         public async Task<BaseDto> Execute(BaseDto baseDto)
         {
             var dtoToExecute = (CreateProductDto)baseDto;
-            await _productService.AddProductAsync(dtoToExecute);
+            var existing = _productService.GetProductByCodeAsync(dtoToExecute.ProductCode);
+            if (existing == null)
+            {
+                await _productService.AddProductAsync(dtoToExecute);
+            }
+
             return dtoToExecute;
         }
     }

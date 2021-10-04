@@ -21,7 +21,7 @@ namespace HBApp.Core.Services
         {
             var dtoToExecute = (GetCampaignInfoDto)baseDto;
             dtoToExecute = await _campaignService.GetCampaignInfoAsync(dtoToExecute);
-
+            dtoToExecute.Status = Singleton.Instance.CampaignTill <= Singleton.Instance.SimulateDate ? "Completed" : "Active";
             return dtoToExecute;
         }
     }

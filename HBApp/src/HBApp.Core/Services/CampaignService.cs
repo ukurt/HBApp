@@ -22,6 +22,12 @@ namespace HBApp.Core.Services
             await _repository.AddAsync(campaign);
         }
 
+        public async Task<Campaign> GetCampaignAsync(CreateCampaignDto createCampaignDto)
+        {
+            var campaing = await _repository.GetAsync<Campaign>(c => c.Name == createCampaignDto.Name);
+            return campaing;
+        }
+
         public async Task<GetCampaignInfoDto> GetCampaignInfoAsync(GetCampaignInfoDto campaignInfoDto)
         {
             var campaing = await _repository.GetAsync<Campaign>(c => c.Name == campaignInfoDto.Name);

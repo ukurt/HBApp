@@ -11,6 +11,7 @@ namespace HBApp.Core
     {
         public string ProductCode { get; set; }
         public int Quantity { get; set; }
+        public int Status { get; set; }
 
         public Order()
         {

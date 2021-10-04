@@ -18,7 +18,13 @@ namespace HBApp.Core.Services
         public async Task<BaseDto> Execute(BaseDto baseDto)
         {
             var dtoToExecute = (CreateCampaignDto)baseDto;
-            await _campaignService.AddCampaignAsync(dtoToExecute);
+            var existing = await _campaignService.GetCampaignAsync(dtoToExecute);
+            if (existing == null)
+            {
+                await _campaignService.AddCampaignAsync(dtoToExecute);
+                Singleton.Instance.CampaignTill = DateTime.MinValue.AddHours(dtoToExecute.Duration);
+            }
+            
             return dtoToExecute;
         }
     }

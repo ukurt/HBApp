@@ -21,8 +21,10 @@ namespace HBApp.Core.Services
         public async Task<BaseDto> Execute(BaseDto baseDto)
         {
             var dtoToExecute = (CreateCampaignDto)baseDto;
-            var existing = await _campaignService.GetCampaignAsync(dtoToExecute.Name);
+            var product = await _productService.GetProductByCodeAsync(dtoToExecute.ProductCode);
+            dtoToExecute.ProductPrice = product.Price;
 
+            var existing = await _campaignService.GetCampaignAsync(dtoToExecute.Name);
             if (existing == null)
             {
                 await _campaignService.AddCampaignAsync(dtoToExecute);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -12,5 +13,7 @@ namespace HBApp.SharedKernel.Interfaces
         Task<T> AddAsync<T>(T entity) where T : BaseEntity;
         Task<T> UpdateAsycn<T>(T entity) where T : BaseEntity;
         Task<T> GetAsync<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity;
+        IQueryable<T> GetAll<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity;
+
     }
 }

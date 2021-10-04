@@ -13,6 +13,7 @@ namespace HBApp.Core.Dto
         public int Duration { get; set; }
         public int PriceManipulationLimit { get; set; }
         public int TargetSaleCount { get; set; }
+        public decimal ProductPrice { get; set; }
 
         public override string ToString()
         {

@@ -15,12 +15,13 @@ namespace HBApp.Core
         public int PriceManipulation { get; set; }
         public int TargetSaleCount { get; set; }
         public int Status { get; set; } // 1:Active 2:Complete
+        public decimal ProductPrice { get; set; } // 1:Active 2:Complete
 
         public Campaign()
         {
 
         }
-        public Campaign(string name, string productCode, int duration, int priceManipulation,int targetSaleCount)
+        public Campaign(string name, string productCode, int duration, int priceManipulation, int targetSaleCount, decimal productPrice)
         {
             Name = name;
             ProductCode = productCode;
@@ -28,6 +29,7 @@ namespace HBApp.Core
             PriceManipulation = priceManipulation;
             TargetSaleCount = targetSaleCount;
             Status = 1;
+            ProductPrice = productPrice;
         }
     }
 }

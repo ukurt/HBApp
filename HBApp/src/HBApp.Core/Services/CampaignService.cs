@@ -18,7 +18,7 @@ namespace HBApp.Core.Services
         public async Task AddCampaignAsync(CreateCampaignDto campaignDto)
         {
             var campaign = new Campaign(campaignDto.Name, campaignDto.ProductCode, campaignDto.Duration,
-                campaignDto.PriceManipulationLimit, campaignDto.TargetSaleCount);
+                campaignDto.PriceManipulationLimit, campaignDto.TargetSaleCount, campaignDto.ProductPrice);
             await _repository.AddAsync(campaign);
         }
 

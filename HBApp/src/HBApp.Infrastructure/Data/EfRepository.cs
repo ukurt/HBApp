@@ -54,5 +54,10 @@ namespace HBApp.Infrastructure.Data
             await _dbContext.SaveChangesAsync();
             return entity;
         }
+
+        public IQueryable<T> GetAll<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity
+        {
+            return _dbContext.Set<T>().Where(predicate);
+        }
     }
 }

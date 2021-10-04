@@ -24,7 +24,9 @@ namespace HBApp.Core.Services
             var campaign  = await _campaignService.GetCampaignAsync(dtoToExecute.Name);
             dtoToExecute.TargetSales = campaign.TargetSaleCount;
             dtoToExecute.Status = Singleton.Instance.CampaignTill <= Singleton.Instance.SimulateDate ? OperationContants.CampaignStatusComplete : OperationContants.CampaignStatusActive;
-
+            dtoToExecute.TotalSales = _orderService.GetTotalSales(dtoToExecute.Name);
+            dtoToExecute.Turnover = _orderService.GetTotalTurnover(dtoToExecute.Name);
+            dtoToExecute.AverageItemPrice = _orderService.GetAveragePriceForCampaign(dtoToExecute.Name);
             if (dtoToExecute.Status == OperationContants.CampaignStatusComplete)
             {
                 await _campaignService.ChangeCampaignStatus(campaign, 2);

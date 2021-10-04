@@ -1,6 +1,6 @@
 # HB Code Assignment
 
-Run Project : Project has sqlite database. When you press run button, you can easily start project.
+Run Project : Project has sqlite database. When you press run button, you can easily start project. You can see database.sqlite under the Web Project.
 
 Project Structure: 
 

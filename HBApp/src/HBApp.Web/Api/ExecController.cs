@@ -20,6 +20,7 @@ namespace HBApp.Web.Api
         {
             _parseService = parseService;
         }
+
         [HttpPost]
         public async Task<IActionResult> Post(IFormFile formFile)
         {

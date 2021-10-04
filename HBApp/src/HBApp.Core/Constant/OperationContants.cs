@@ -20,8 +20,13 @@ namespace HBApp.Core.Constant
                  @"(?<integer>[0-9]+)|" +
                 @"(?<invalid>[^\s]+)";
 
-        public const string CampaignStatusComplete = "Complete";
-        public const string CampaignStatusActive = "Active";
+        public const int OrderStatusActive = 1;
+        public const int OrderStatusCancel = 2;
+
+        public const int CampaignStatusActive = 1;
+        public const int CampaignStatusCompleted = 2;
+
+
 
     }
 }

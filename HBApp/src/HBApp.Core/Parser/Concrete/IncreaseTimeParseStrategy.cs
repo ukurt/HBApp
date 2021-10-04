@@ -28,8 +28,8 @@ namespace HBApp.Core.Services
 
                 if (!string.IsNullOrEmpty(intValue))
                 {
-                    var date = Singleton.Instance.SimulateDate.AddHours(Convert.ToInt32(intValue));
-                    var formattedDate = $"{date:hh:mm}";
+                    Singleton.Instance.SimulateDate = Singleton.Instance.SimulateDate.AddHours(Convert.ToInt32(intValue));
+                    var formattedDate = $"{Singleton.Instance.SimulateDate:hh:mm}";
                     increaseTimeDto.Time = formattedDate;
                 }
 

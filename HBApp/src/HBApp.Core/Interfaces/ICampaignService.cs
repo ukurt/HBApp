@@ -1,4 +1,5 @@
 ﻿using HBApp.Core.Dto;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace HBApp.Core.Interfaces
@@ -9,6 +10,8 @@ namespace HBApp.Core.Interfaces
         Task<Campaign> GetCampaignAsync(string campaignName);
         Task<Campaign> GetActiveCampaignForThisProduct(string productCode);
         Task ChangeCampaignStatus(Campaign campaign, int status);
+        IQueryable<Campaign> GetActiveCampaigns();
+        Task UpdateCampaingAsync(Campaign campaign);
 
 
     }

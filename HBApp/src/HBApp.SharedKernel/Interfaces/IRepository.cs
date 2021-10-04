@@ -11,7 +11,7 @@ namespace HBApp.SharedKernel.Interfaces
         Task<T> GetByIdAsync<T>(int id) where T : BaseEntity;
         Task<List<T>> ListAsync<T>() where T : BaseEntity;
         Task<T> AddAsync<T>(T entity) where T : BaseEntity;
-        Task<T> UpdateAsycn<T>(T entity) where T : BaseEntity;
+        Task<T> UpdateAsycn<T>(T entity, int Id) where T : BaseEntity;
         Task<T> GetAsync<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity;
         IQueryable<T> GetAll<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity;
 

@@ -1,7 +1,9 @@
-﻿using HBApp.Core.Dto;
+﻿using HBApp.Core.Constant;
+using HBApp.Core.Dto;
 using HBApp.Core.Interfaces;
 using HBApp.SharedKernel.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace HBApp.Core.Services
@@ -24,8 +26,13 @@ namespace HBApp.Core.Services
 
         public async Task<Campaign> GetActiveCampaignForThisProduct(string productCode)
         {
-            var campaing = await _repository.GetAsync<Campaign>(c => c.Name == productCode && c.Status == 1);
+            var campaing = await _repository.GetAsync<Campaign>(c => c.ProductCode == productCode && c.Status == OperationContants.CampaignStatusActive);
             return campaing;
+        }
+        public IQueryable<Campaign> GetActiveCampaigns()
+        {
+            var campaings = _repository.GetAll<Campaign>(c => c.Status == OperationContants.CampaignStatusActive);
+            return campaings;
         }
 
         public async Task<Campaign> GetCampaignAsync(string campaignName)
@@ -37,7 +44,12 @@ namespace HBApp.Core.Services
         public async Task ChangeCampaignStatus(Campaign campaign, int status)
         {
             campaign.Status = status;
-            await _repository.UpdateAsycn(campaign);
+            await _repository.UpdateAsycn(campaign, campaign.Id);
+        }
+
+        public async Task UpdateCampaingAsync(Campaign campaign)
+        {
+            await _repository.UpdateAsycn(campaign, campaign.Id);
         }
     }
 }

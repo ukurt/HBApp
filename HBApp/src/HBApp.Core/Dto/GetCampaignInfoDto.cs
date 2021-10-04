@@ -9,7 +9,7 @@ namespace HBApp.Core.Dto
     public class GetCampaignInfoDto : BaseDto
     {
         public string Name { get; set; }
-        public string Status { get; set; }
+        public int Status { get; set; }
         public int TargetSales { get; set; }
         public int TotalSales { get; set; }
         public int Turnover { get; set; }

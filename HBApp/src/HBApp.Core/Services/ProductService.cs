@@ -32,7 +32,7 @@ namespace HBApp.Core.Services
         {
             var product = await _repository.GetAsync<Product>(p => p.ProductCode == productCode);
             product.Stock -= quantity;
-            await _repository.UpdateAsycn(product);
+            await _repository.UpdateAsycn(product, product.Id);
             return product;
         }
     }

@@ -23,13 +23,14 @@ namespace HBApp.Core.Services
             var dtoToExecute = (GetCampaignInfoDto)baseDto;
             var campaign  = await _campaignService.GetCampaignAsync(dtoToExecute.Name);
             dtoToExecute.TargetSales = campaign.TargetSaleCount;
-            dtoToExecute.Status = Singleton.Instance.CampaignTill <= Singleton.Instance.SimulateDate ? OperationContants.CampaignStatusComplete : OperationContants.CampaignStatusActive;
+            dtoToExecute.Status = Singleton.Instance.CampaignTill <= Singleton.Instance.SimulateDate ? OperationContants.CampaignStatusCompleted : OperationContants.CampaignStatusActive;
             dtoToExecute.TotalSales = _orderService.GetTotalSales(dtoToExecute.Name);
             dtoToExecute.Turnover = _orderService.GetTotalTurnover(dtoToExecute.Name);
             dtoToExecute.AverageItemPrice = _orderService.GetAveragePriceForCampaign(dtoToExecute.Name);
-            if (dtoToExecute.Status == OperationContants.CampaignStatusComplete)
+
+            if (dtoToExecute.Status == OperationContants.CampaignStatusCompleted)
             {
-                await _campaignService.ChangeCampaignStatus(campaign, 2);
+                await _campaignService.ChangeCampaignStatus(campaign, OperationContants.CampaignStatusCompleted);
             }
 
             return dtoToExecute;

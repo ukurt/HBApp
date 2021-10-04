@@ -1,4 +1,5 @@
-﻿using HBApp.Core.Dto;
+﻿using HBApp.Core.Constant;
+using HBApp.Core.Dto;
 using HBApp.Core.Interfaces;
 using HBApp.SharedKernel.Interfaces;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace HBApp.Core.Services
 
         public int GetTotalTurnover(string campaignCode)
         {
-            var orders = _repository.GetAll<Order>(o => o.CampaignCode == campaignCode && o.Status == 2);
+            var orders = _repository.GetAll<Order>(o => o.CampaignCode == campaignCode && o.Status == OperationContants.OrderStatusCancel);
             return orders.Count();
         }
     }

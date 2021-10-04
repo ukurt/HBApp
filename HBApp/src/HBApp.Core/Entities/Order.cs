@@ -1,4 +1,5 @@
-﻿using HBApp.SharedKernel;
+﻿using HBApp.Core.Constant;
+using HBApp.SharedKernel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace HBApp.Core
             Quantity = quantity;
             CampaignCode = campaignCode;
             UnitPrice = unitPrice;
+            Status = OperationContants.OrderStatusActive;
         }
     }
 }

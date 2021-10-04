@@ -1,16 +1,16 @@
 ﻿using HBApp.Core.Constant;
+using HBApp.Core.Dto;
 using HBApp.Core.Interfaces;
 using HBApp.Core.ParseStrategy;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace HBApp.Core.Services
 {
     public class ParseService : IParseService
     {
-
         private StrategyContext strategyContext = new();
-
-        public string Parse(string text)
+        public async Task<BaseDto> Parse(string text)
         {
             var splitted = text.Split(" ");
             if (splitted != null && splitted.Any())
@@ -41,10 +41,10 @@ namespace HBApp.Core.Services
                         break;
                 }
 
-                strategyContext.Execute(text);
+                return await strategyContext.Execute(text);
             }
 
-            return string.Empty;
+            return null;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using HBApp.Core.Interfaces;
+﻿using HBApp.Core.Dto;
+using HBApp.Core.Interfaces;
 using HBApp.SharedKernel.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,9 +15,9 @@ namespace HBApp.Core.Services
             _repository = repository;
         }
 
-        public async Task<Product> AddProductAsync(string productCode, decimal price, int stock)
+        public async Task<Product> AddProductAsync(CreateProductDto createProductDto)
         {
-            var product = new Product(productCode, price, stock);
+            var product = new Product(createProductDto.ProductCode, createProductDto.Price, createProductDto.Stock);
             await _repository.AddAsync(product);
             return product;
         }

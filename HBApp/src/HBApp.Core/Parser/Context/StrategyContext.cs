@@ -1,4 +1,7 @@
-﻿namespace HBApp.Core.ParseStrategy
+﻿using HBApp.Core.Dto;
+using System.Threading.Tasks;
+
+namespace HBApp.Core.ParseStrategy
 {
     public class StrategyContext
     {
@@ -9,9 +12,9 @@
             _parseStrategy = parseStrategy;
         }
 
-        public void Execute(string text)
+        public async Task<BaseDto> Execute(string text)
         {
-            _parseStrategy.Parse(text);
+            return await _parseStrategy.Parse(text);
         }
     }
 }

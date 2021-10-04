@@ -24,7 +24,8 @@ namespace HBApp.Web.Api
                 while (!stream.EndOfStream)
                 {
                     var text = await stream.ReadLineAsync();
-                    _parseService.Parse(text);
+                    var result = await _parseService.Parse(text);
+                    var syntax = result.ToString();
                 }
             }
 

@@ -1,4 +1,5 @@
-﻿using HBApp.Core.ParseStrategy;
+﻿using HBApp.Core.Dto;
+using HBApp.Core.ParseStrategy;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ namespace HBApp.Core.Services
 {
     public class CreateProductParseStrategy : IParseStrategy
     {
-        public async Task<string> Parse(string text)
+        public async Task<BaseDto> Parse(string text)
         {
             text = text.Trim();
 
@@ -20,9 +21,7 @@ namespace HBApp.Core.Services
 
             MatchCollection matches = Regex.Matches(text, pattern, RegexOptions.ExplicitCapture);
 
-            string productCode = "";
-            decimal price = 0;
-            int stock = 0;
+            CreateProductDto createProductDto = new();
 
             //Eger create_product icin verilen pattern e uymuyorsa patlat!
             if (matches.Count != 4)
@@ -39,7 +38,7 @@ namespace HBApp.Core.Services
 
                 if (!string.IsNullOrEmpty(variable))
                 {
-                    productCode = variable;
+                    createProductDto.ProductCode = variable;
                 }
 
                 var price_stock = m.Groups["integer"].Value;
@@ -48,18 +47,18 @@ namespace HBApp.Core.Services
                 {
                     if (i == 2)
                     {
-                        price = Convert.ToInt32(price_stock);
+                        createProductDto.Price = Convert.ToInt32(price_stock);
                     }
                     if (i == 3)
                     {
-                        stock = Convert.ToInt32(price_stock);
+                        createProductDto.Stock = Convert.ToInt32(price_stock);
                     }
                 }
 
                 i++;
             }
 
-            return "";
+            return await Task.FromResult(createProductDto);
         }
 
     }

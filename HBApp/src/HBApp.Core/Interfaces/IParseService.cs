@@ -1,7 +1,10 @@
-﻿namespace HBApp.Core.Interfaces
+﻿using HBApp.Core.Dto;
+using System.Threading.Tasks;
+
+namespace HBApp.Core.Interfaces
 {
     public interface IParseService
     {
-        string Parse(string text);
+        Task<BaseDto> Parse(string text);
     }
 }

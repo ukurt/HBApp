@@ -30,9 +30,6 @@ namespace HBApp.Core.Services
         {
             //Gelen text den olabildiğince tokenları doldur, eksikleri execute metodunda dolacak
             //ornegin get_campaign_info da Turnover yada Total Sales verisi gibi.
-
-            
-
             var key = StringHelper.SplitAndGetFirst(text);
 
             if (!string.IsNullOrEmpty(key))

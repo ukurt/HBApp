@@ -9,3 +9,5 @@ Also using Decorator and Strategy patterns to reduce dependencies as much as pos
 
 I also used web api as client project and integrated swagger. If you upload the file to run the example, you can see the result in the swagger console.
 
+But I am sorry that the test projects were not fully prepared due to lack of time.
+

@@ -1,4 +1,5 @@
-﻿using HBApp.Core.Dto;
+﻿using HBApp.Core.Constant;
+using HBApp.Core.Dto;
 using HBApp.Core.Interfaces;
 using HBApp.Core.ParseStrategy;
 using System;
@@ -25,6 +26,9 @@ namespace HBApp.Core.Services
 
             foreach (var campaign in campaigns)
             {
+                if (campaign.Status == OperationContants.CampaignStatusCompleted)
+                    continue;
+                
                 var totalSales = _orderService.GetTotalSales(campaign.Name);
 
                 if (campaign.TargetSaleCount > totalSales)
